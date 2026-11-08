@@ -166,3 +166,37 @@ def farm_report(ctx):
         notes.append("food_days %.1f LOW" % fd)
     out["notes"] = notes or ["farms OK"]
     return out
+
+
+_EXPLODERS = ("Boomrat", "Boomalope")
+
+
+@tool(
+    "hunt_safe",
+    "Designate the n nearest animals that are safe to hunt: no faction (never a caravan's or colony animal), not a predator, 0% revenge chance, not an exploder (boomrat/boomalope). Optional avoid=[x,z] skips animals within 60 tiles of it (a raider's position). dry_run=True only lists them.",
+    {"n": "int, default 4", "avoid": "[x,z] or null", "dry_run": "bool, default true"},
+)
+def hunt_safe(ctx, n=4, avoid=None, dry_run=True):
+    import math
+    home = (_call(ctx, "state.summary") or {}).get("home_center") or [0, 0]
+    pick = []
+    for a in sorted(_as_list(_call(ctx, "state.pawns", filter="all")), key=lambda a: math.dist(a["pos"], home)):
+        k = a.get("kind") or ""
+        if a.get("faction") or k in _EXPLODERS or k in ("Colonist",) or k.startswith(("Mech", "Human")):
+            continue
+        if avoid and math.dist(a["pos"], avoid) < 60:
+            continue
+        try:
+            if _call(ctx, "engine.get", path=f"Def:ThingDef:{k}.race.predator", depth=0) is not False:
+                continue
+            if _call(ctx, "engine.get", path=f"Def:ThingDef:{k}.race.manhunterOnDamageChance", depth=0) != 0.0:
+                continue
+        except Exception:
+            continue  # not an animal def
+        pick.append(a)
+        if len(pick) >= n:
+            break
+    out = {"targets": [(a["kind"], a["pos"]) for a in pick]}
+    if pick and not dry_run:
+        out["designate"] = _call(ctx, "ui.designate", designator="hunt", things=[a["id"] for a in pick])
+    return out

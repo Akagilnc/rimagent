@@ -20,6 +20,8 @@ tags:
 4. Walls stone, doors and furniture wood; no campfire or stockpile inside a bedroom.
 5. Kitchen with the raw-food store next to the stove; butcher spot and corpses away from bedrooms and kitchen.
 6. Terrain: sand/gravel cannot carry stone walls; dry-run every cell first.
+7. A door blueprint placed on an existing wall removes that wall at once: the room is open until the door is built. Have the builder rush it, or place the door where no wall stands yet.
+8. After any change, check `map.cell` room for every bedroom (role Bedroom, 16+ cells) and for the hall.
 
 ## Structures: costs and numbers
 | Def | Cost | Work | Base HP | Notes |

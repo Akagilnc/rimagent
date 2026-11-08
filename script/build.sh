@@ -4,6 +4,6 @@
 set -e
 cd "$(dirname "$0")/.."
 dotnet build mod/Source/RimBridge.csproj -c Release --nologo -v quiet "$@"
-ls -la mod/1.6/Assemblies/RimBridge.dll
+ls -la mod/*/Assemblies/RimBridge.dll
 dotnet build mod-steward/Source/RimBridgeSteward.csproj -c Release --nologo -v quiet "$@"
-ls -la mod-steward/1.6/Assemblies/RimBridgeSteward.dll
+ls -la mod-steward/*/Assemblies/RimBridgeSteward.dll

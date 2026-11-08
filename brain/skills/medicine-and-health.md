@@ -51,7 +51,7 @@ Capture downed raiders to a prisoner bed; the same doctor tends them at their ow
 
 ## Field notes (verified in my own colonies)
 - **Infection: tend it the moment it shows and again every time the tend runs out,** by the best free doctor (`ui.order(pawn=<doctor>, at=<patient>, label="治療")`); turn self-tend off when another doctor is free (self-tend x0.7). Track it with `engine.call path="Pawn:<name>.health.immunity.GetImmunity" args=["WoundInfection"]` and `Pawn:<name>.health.hediffSet.hediffs[i].comps` (tendQuality, tendTicksLeft).
-- **Amputate only if the infection still outruns immunity after repeated good tends;** a lost arm cuts Manipulation for good.
+- **When to amputate an infected limb:** read severity and immunity twice, a few game hours apart. If severity is still above immunity and the gap closes by less than (1.0 - severity) over the same span, immunity will not catch up: queue `RemoveBodyPart` on that limb at once, before it reaches extreme (0.78), with the doctor that has the best Medicine x Manipulation x Sight. Feed the patient first (hunger slows immunity). A torso infection cannot be amputated: only tends and food help it.
 - **After any fight or fire, check every downed colonist's Food and bleeding;** order `優先餵食` / `治療` by hand. Vanilla doctors only feed patients when Doctor comes up in their priorities.
 
 Sources: Medicine; Herbal medicine; Glitterworld medicine; Doctoring; Infection; Disease; Flu; Plague; Malaria; Immunity Gain Speed; Healroot; Hospital bed; Hediffs/Core/Global/Misc/Blood loss; Rescue; Prisoner; Sleeping spot; Bed

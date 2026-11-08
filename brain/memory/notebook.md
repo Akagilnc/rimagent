@@ -47,3 +47,13 @@ BEDROOM WING v2 (d15, doc: about 25 cells, 4x6 or 5x5): 5 rooms 4x6 interior: W 
 d21: Hector + Nicole are lovers. DoubleBed blueprint at [114,155] in Nicole's room (x112-115). When built: assign both (engine.call Thing:<bed>.CompAssignableToPawn.TryAssignPawn args=[name]); move Nicole's single Bed41984 to the spare west room. Humps now owns Bed50116 [108,153]. Ambrosia (18) and 5 hunts designated; Pemmican researched (bill at the campfire once meat + vegetables exist).
 
 d21 LAYOUT FIX: bedroom gaps plugged ([116,151] [116,153] [116,154] [121,155]). Corridors (2 wide, enclosed) so no bedroom opens outdoors: west z149-150 x102-109 (walls z148 x101-109, x101 z149-150, door [110,149] into the hall) and east z149-150 x121-125 (walls z148 x121-126, x126 z149-150, door [120,149]). Verify with map.cell room per bedroom = Bedroom 24 cells.
+
+d22 WHOLE-BASE AUDIT (against base-building, mood, food, medicine, temperature docs):
+- HEAT WAVE (44C out): kitchen 45C, storeroom 41C (meat rots, heatstroke), rice stalls above 42C. Passive coolers queued kitchen [113,136] + storeroom [119,136]. Bedrooms 17C, hall 27C.
+- WOOD 0: passive coolers burn 10/day, campfire too. 20 trees designated, Mila + Humps PlantCutting 1. Keep wood >= 100.
+- FOOD: rice1 40 cells for 5 pawns (doc 10+/pawn, 25/pawn for safety): add fields to ~125 cells after the heat. No freezer (no power): cook small batches.
+- MEDICINE: all colonists HerbalOrWorse (industrial for infections/surgery). Healroot zone 20+ tiles for Mila (Plants 9) after the heat.
+- ROOMS: storeroom doubles as lab (imp -61), kitchen dirty (-1 cleanliness, food poisoning): stone tile floors kitchen first, then bedrooms, then storeroom; research bench to its own lit room later.
+- CLOTHES: tattered; build a tailoring bench (hall), dusters for heat, 116 leather + cotton1.
+- DEFENSE: no perimeter/chokepoint, 2 revolvers only, rifle burned. Plan a walled base with one door + barricades; buy guns from the next trader.
+- POWER: none (1 component). Solar research queued; wind turbine needs 2 components.

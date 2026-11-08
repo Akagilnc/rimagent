@@ -23,3 +23,6 @@ PROBLEMS / NEXT
 2. Mood ~53: awful barracks -7 (split into bedrooms this season), slept-hot -4 (heater on a thermostat once power exists).
 3. Defense: barricades outside [110,139] after a stonecutter; turrets later. First Cassandra raid expected ~day 5-10.
 4. Research: Batteries -> SolarPanels -> Pemmican -> Smithing.
+
+DAY 3 manhunter swan attacked Mila at [90,169] (2 scratches + bite, bleeding); Kena+Nicole shot it from ~[107,141]. Mila self-tend on (NormalOrWorse; tend order to Nicole was not offered). Bite = 30% infection: re-check in 12h.
+DORMANT MECHS at [158-163,60-67] near the cryptosleep tomb: Cyclops (charge blaster) + 2 Pikemen, duty SleepForever. Never send anyone there (hunting/foraging/mining radius!).

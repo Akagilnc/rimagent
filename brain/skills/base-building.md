@@ -43,6 +43,8 @@ Wood walls `rect [119,97,11,9]` (11x9 outline), a wood **Door** in the south wal
 - Roofs extend **6 tiles** from any wall/column, so interiors up to **12 wide** roof fully; wider needs interior columns/walls. Temperature control needs **>= 75% roofed**; under that the room snaps to outdoor temperature. 300+ unroofed tiles = "outdoors" (Slept outside, no room mood).
 - Roofs are free and auto-designated over new rooms. Removing the last support within 6 tiles collapses the roof: thin/constructed roof deals **15-30 crush damage to head/neck** (roughly 1 in 3 kills an unhelmeted pawn); **overhead mountain** collapse destroys everything beneath. Lay a Remove-roof area before mining or deconstructing support walls. Trees cannot grow under roofs.
 - Indoor items never deteriorate. Dark rooms give 80% work/move speed; a torch lamp is 10 wood for 10 days.
+- **Crematorium: its own small room by the corpse dump, not the workshop.** Haulers carrying corpses through a workroom (and the worker beside the furnace) get observed-corpse penalties; build walls + a door around it with a corpse stockpile inside, roofed (electric crematoria short in rain).
+- **Never open a working freezer's wall to add a cooler in hot weather** (the room snaps to outdoors at once); if it must be done, have materials on site and order the best builder to rush it.
 
 ## Bedroom vs barracks
 - Bedroom = only the owner's bed(s) (a lover pair is fine), no medical/prisoner bed; more than one unassigned bed makes a barracks. A barracks costs about **-5 mood vs an equivalent private bedroom** (-4 at higher quality). One barracks is fine on day 1; split into bedrooms within the first season.

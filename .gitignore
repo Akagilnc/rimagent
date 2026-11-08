@@ -19,3 +19,4 @@ mod/ledger.jsonl
 runs/
 docs/*.tmp
 CLAUDE.md
+runtime/

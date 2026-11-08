@@ -59,3 +59,7 @@ Expect 1-2 poorly armed raiders (35-50 points). Before day 10: walled bedroom bl
 - **Non-human hostiles are not raids.** A sealed tomb of `Fleshbeast` dark entities with `LordJob_FleshbeastAssault` sits ~110 tiles out; it only matters if it breaks out. Manhunter animals (`Manhunter hare` etc.): draft both violence-capable pawns, the fight is over in seconds (rifle + melee knife killed one hare, only a minor bite) — then undraft and tend.
 
 Sources: Raid points; Raider; Pirates/Pawns; Tribes/Pawns; Defense tactics; Defense structures; Cover; Sandbags; Spike trap; Mini-turret; Drafting
+- **Position by this raider's target, not the last raid's.** Read the raider's job (`state.pawn` job_detail target: a cooler, a turret, a colonist) and its path; put shooters at wall corners/doorways that can see *the target* as well as the approach. Copying the previous raid's spot left both shooters without line of sight while a trap or turret did the killing.
+- **Dispatch shooters early**: from the rally it took ~18 s real time at 1x to reach a firing spot 25 tiles away; send them when the raider is ~110 tiles out, not 75.
+- **Children cannot be drafted**: on any hostile, first `ui.goto` the child indoors (a knife drifter went straight for the 5-year-old working in the fields).
+- **Never leave the rally inside a room with no line of sight and then turn the combat order off** to run a custom fight script into the open: a revolver shooter walked to 11 tiles from a revolver raider in the open and was downed. Keep the order on; move only the mispositioned pawn to cover.

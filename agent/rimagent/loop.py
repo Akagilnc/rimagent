@@ -96,6 +96,9 @@ def think(ctx: Context, user_message: str, situation_hint: str = "", *, max_call
     stops calling tools, or hits max_calls. `system` overrides the play system prompt (streams that are not playing
     the colony, e.g. the watchdog, pass their own); `end_tools` are the only tools still offered once the cap is hit."""
     cfg = ctx.config
+    if cfg["play"].get("driver") == "external":   # an outside agent plays the step (see handoff.py)
+        from . import handoff
+        return handoff.think(ctx, user_message, situation_hint, trigger=trigger, system=system)
     max_calls = max_calls or int(cfg["play"].get("max_tool_calls", 30))
     ctx.reset_turn()
     ctx.registry.reload_brain()

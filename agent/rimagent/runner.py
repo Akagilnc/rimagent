@@ -159,7 +159,8 @@ class Runner:
         self._watchdog_lock = threading.Lock()
         self.thinking = False
         self.sandbox = False
-        self.parallel = bool(cfg["play"].get("parallel", False))
+        self.external = cfg["play"].get("driver") == "external"   # think steps go to an outside agent (handoff.py)
+        self.parallel = bool(cfg["play"].get("parallel", False)) and not self.external
         self.steward = bool((cfg.get("steward") or {}).get("enabled", True))   # desired state; apply_steward pushes it to the mod
         ocfg = (cfg.get("steward") or {}).get("orders")
         ocfg = ocfg if isinstance(ocfg, dict) else {}
@@ -233,6 +234,32 @@ class Runner:
 
     def new_game(self) -> None:
         play = self.cfg["play"]
+        if self.external:
+            # The outside agent starts colonies through the vanilla setup pages (landing site, starting pawns);
+            # game.new_game would skip both. Wait for it: a fresh game resets the ledger, so seq drops.
+            seq0 = int(self.bridge.status().get("seq", 0))
+            print("HANDOFF new_game - | start a new colony through the setup pages, then leave it playing", flush=True)
+            while True:
+                time.sleep(3)
+                st = self.bridge.status()
+                if st.get("state") == "playing" and int(st.get("seq", 0)) < seq0:
+                    break
+            self.episode += 1
+            self.seed = st.get("seed") or f"external-{self.episode}"
+            self.events, self.pending_events, self.pending_alerts, self.step_notes = [], [], [], []
+            self.deaths = self.raids = 0
+            self.start_day = self.last_day = int(st.get("day", 0))
+            self.last_improve_day = self.start_day
+            self.ctx.last_seq = 0
+            self.ctx.episode, self.ctx.seed = self.episode, self.seed
+            memory.notebook_reset(f"# Colony notebook, episode {self.episode}, seed {self.seed}\n\n(new game; nothing decided yet)")
+            from . import tracker, worlddiff
+            tracker.reset(); worlddiff.reset()
+            self.apply_steward(self.steward)
+            self.bus.emit("episode_start", {"episode": self.episode, "seed": self.seed})
+            _save_episode({"seed": self.seed, "episode": self.episode, "start_day": self.start_day, "deaths": 0, "raids": 0, "last_improve_day": self.last_improve_day})
+            self.force_think = "new game started"
+            return
         seeds = play.get("seeds") or ["rimagent-1"]
         self.episode += 1
         self.seed = seeds[(self.episode - 1) % len(seeds)]

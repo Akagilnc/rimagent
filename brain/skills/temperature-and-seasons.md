@@ -30,6 +30,8 @@ Year = 4 quadrums of 15 days: Aprimay (1-15), Jugust (16-30), Septober (31-45), 
 | Vent | 30 steel, 400 work, Complex furniture | Equalizes two rooms, impassable | none | Heat one central room and vent outward; chains lose efficiency. |
 
 Freezer: coolers below 0 C (spoilage stops at freezing; from 10 to 0 C it slows by temp/10). Over ~50 tiles use 2 coolers at 0 C and -2 C so one idles. Never open a freezer wall in summer to add a cooler: the room snaps to outdoor temperature.
+- **A newly built Cooler targets 24 C.** Set it right after it is built: `engine.set Thing:<id>.compTempControl.targetTemperature -13` (freezer); otherwise it idles and the freezer warms.
+- A campfire inside a 9x7 barracks holds it at 28 C: everyone gets "slept in the heat" -4. Campfires have no thermostat; once power exists use a heater set to ~21 C instead.
 
 ## Insulation rules
 - A room holds its own temperature only when **>= 75% roofed**; open doors and roof gaps equalize fast; a breach in an exterior wall resets it to outdoors instantly.

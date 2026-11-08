@@ -56,6 +56,9 @@ The steward's scorer sets priorities from skills, passions, health and colony ne
 - **Known artifact:** with unhauled items lying around, the scorer puts **Hauling 1 on every pawn**, and then Cooking/Construction/Research starve. Symptoms: 0 meals while raw food sits in the stockpile, or a blueprint count that has not moved for a day. Fix with a posture (e.g. `work={"Hauling": -0.5, "Cooking": 0.5, "Construction": 0.4}`), not by hand.
 - Only take one pawn manual for a real blocker (e.g. literally nobody else can cook): `steward.pawn managed=false` + `ui.set_work`, note it, hand back with `managed=true`.
 - Audit order: raw food but no meals -> check `state.bills` on the stove/campfire (a missing CookMealSimple bill is the usual cause) BEFORE blaming priorities; then check the best cook isn't drowned in Hauling.
+- **The production stock job picks its own work table.** With both a FueledStove and an ElectricStove it kept moving the meal bill back to the fueled stove (`steward.stock.set table:` did not stick) and dropped the bill on the electric stove, burning wood. Once an electric stove exists, deconstruct the fueled stove.
+- **`steward.stock.set max_radius` is global**: a 45-tile cap set for hunting also capped mining, which then reported "no valid targets" while 91 steel ore cells sat further out. When a stock job says no targets, check the radius before concluding the map is empty.
+- The `corpses` standing order may place a ButcherSpot wherever there is room — once it landed inside the barracks. Put your own butcher spot outside (and give it a `ButcherCorpseFlesh` bill) before the first hunt.
 
 ## Production bills (a new work table is USELESS until its bill is added)
 A table with no bill shows work "available" but the pawn does nothing — this looks identical to a priority problem. **After a stove/butcher/stonecutter/art bench finishes building, add its bill.** Verified recipe defNames (RimWorld 1.6, read from `defs.get`):

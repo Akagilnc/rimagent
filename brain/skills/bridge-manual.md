@@ -60,6 +60,7 @@ The mod keeps an append-only event ledger: `letter`, `message`, `incident`, `hos
 A step is one LLM conversation with a tool budget (~30 calls). Every step **must end with `end_turn(notes, wake_in_hours, wake_on)`** — until you call it the game stays paused and nothing you ordered is executed by pawns. `wake_in_hours` is in-game hours (default 6; use 1-2 during a raid or a fire, 8-12 when things are calm), `wake_on` is a list of event kinds that should wake you early. `end_episode(reason)` declares the game lost or hopeless. Order of work inside a step: read (`rw_state_summary`, alerts, letters, new events) -> decide the single most urgent thing -> act -> a quick verification read (`rw_state_designations`, blueprint count, `rw_ui_orders_at` result) -> `notebook_append` if something notable happened -> `end_turn`.
 
 ## 7. Pitfalls
+- **Move (reinstall) a building:** `engine.call path="Type:RimWorld.GenConstruct.PlaceBlueprintForReinstall" args=[<thing id>, [x,z], "Map", "North", "Player"]` places an install blueprint; a builder uninstalls and reinstalls it. There is no dedicated bridge method.
 - **Stock counts are storage-only:** `key_stocks`, `state.stocks` and `food_days` count only items in stockpiles/shelves. Before reacting to a sudden drop, `map.find category=Foods|Medicine` for loose stacks. Point stockpiles only at roofed rooms.
 
 - **Crash-landed items start forbidden.** `rw_map_find(kind=item, forbidden=true)` lists them; `rw_ui_designate(designator=unforbid, things=[ids])` or a `rect` over the drop site. Nobody hauls forbidden things.

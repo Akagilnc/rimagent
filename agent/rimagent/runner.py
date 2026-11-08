@@ -5,6 +5,7 @@ import os
 import subprocess
 import webbrowser
 import threading
+import re
 import time
 from typing import Any
 
@@ -449,7 +450,7 @@ class Runner:
         trigger = None
         live = set()
         for a in alerts:
-            label = str(a.get("label", "")); pr = str(a.get("priority", ""))
+            label = re.sub(r" x\d+$", "", str(a.get("label", ""))); pr = str(a.get("priority", ""))  # "x2" -> "x3" is the same alert
             live.add(label)
             prios = set(self.cfg["play"].get("alert_wake_priorities", ["Critical"]))
             urgent = pr in prios or "idle" in label.lower()

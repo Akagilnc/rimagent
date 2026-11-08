@@ -13,6 +13,14 @@ tags:
 
 # Base building
 
+## Before placing any room, check every line
+1. Size: bedroom interior at least 4x4 (16 cells), 5x5 or 4x6 for "very impressive"; no closet rooms or 1-wide corridors.
+2. Light: a torch or lamp in every bedroom, dining room and workroom.
+3. Floor: plan a floor (stone tile beauty +1, 4 blocks/tile); bare soil lowers cleanliness.
+4. Walls stone, doors and furniture wood; no campfire or stockpile inside a bedroom.
+5. Kitchen with the raw-food store next to the stove; butcher spot and corpses away from bedrooms and kitchen.
+6. Terrain: sand/gravel cannot carry stone walls; dry-run every cell first.
+
 ## Structures: costs and numbers
 | Def | Cost | Work | Base HP | Notes |
 |---|---|---|---|---|

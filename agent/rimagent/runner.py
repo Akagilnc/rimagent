@@ -450,7 +450,7 @@ class Runner:
         trigger = None
         live = set()
         for a in alerts:
-            label = re.sub(r" x\d+$", "", str(a.get("label", ""))); pr = str(a.get("priority", ""))  # "x2" -> "x3" is the same alert
+            label = re.sub(r"\d+", "#", str(a.get("label", ""))); pr = str(a.get("priority", ""))  # "x2"/"20 hours" -> "x3"/"15 hours" is the same alert
             live.add(label)
             prios = set(self.cfg["play"].get("alert_wake_priorities", ["Critical"]))
             urgent = pr in prios or "idle" in label.lower()

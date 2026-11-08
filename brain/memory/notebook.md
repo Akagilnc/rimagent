@@ -31,7 +31,9 @@ DAY ~6 (3/2) DISASTER + RESET. Steward hunting job designated a caravan donkey -
 
 GOALS (small, check each wake; tick when state proves it)
 G1 [now] nobody starves: food_days > 3. Berries+healroot designated (14), hunt 2 alpacas ~[133,240] (Hector), resow rice1 when Growing runs. Downed pawns get fed by hand if nobody does it.
-G2 [today] barracks is a room again: slate walls z143 x116-120 + x120 z144-150 + [113,151], wood door [115,143], 4th bed [111,145]. Proof: room_digest shows Barracks, blueprints 0.
-G3 [2 days] no colonist breaks: moods > 35. Table+stools inside, pain heals with bed rest.
+G2 [DONE d8] barracks is a room again: slate walls z143 x116-120 + x120 z144-150 + [113,151], wood door [115,143], 4th bed [111,145]. Proof: room_digest shows Barracks, blueprints 0.
+G3 [DONE d9] no colonist breaks: moods > 35. Table+stools inside, pain heals with bed rest.
 G4 [after G1-G3] storage out of the bedroom: separate stone storeroom; campfire replaced by a stove in its own kitchen; bedrooms later.
 Rule I break most: every check = run rim_look (full picture), never a narrow query; any danger != None -> name every hostile.
+
+DAY 10: G4 half done. New stone block south of the barracks: storeroom x115-119 z136-142 (zone store, Important, no food/corpses, RecRoom because of the horseshoes pin), kitchen x111-113 z136-142 (zone pantry, food only, Important). Steel doors [110,139] (outside) and [114,139]. Barracks has no stockpile any more. LEFT: campfire still in the barracks [117,146] -> new campfire in the kitchen when wood >= 40, then deconstruct the old one. Next goals: G5 research bench (SimpleResearchBench), G6 food_days > 5 (rice1 sown d9, hunts).

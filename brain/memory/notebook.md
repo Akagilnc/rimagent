@@ -26,3 +26,12 @@ PROBLEMS / NEXT
 
 DAY 3 manhunter swan attacked Mila at [90,169] (2 scratches + bite, bleeding); Kena+Nicole shot it from ~[107,141]. Mila self-tend on (NormalOrWorse; tend order to Nicole was not offered). Bite = 30% infection: re-check in 12h.
 DORMANT MECHS at [158-163,60-67] near the cryptosleep tomb: Cyclops (charge blaster) + 2 Pikemen, duty SleepForever. Never send anyone there (hunting/foraging/mining radius!).
+
+DAY ~6 (3/2) DISASTER + RESET. Steward hunting job designated a caravan donkey -> Kena shot it, tribe 家族聯盟的路 hostile (-92). Then a 垃圾人 raider set the wooden workshop on fire while I ignored the raid alert ("x0"). Workshop, stonecutter, research bench, table, rice crop, wind turbine burned. New colonist Hector (Shooting 9, Mining 11, revolver). OWNER: steward fully OFF (config.local.yaml steward.enabled false); I set priorities and designations by hand. Vanilla already rescues (Doctor) and fights fire in the home area.
+
+GOALS (small, check each wake; tick when state proves it)
+G1 [now] nobody starves: food_days > 3. Berries+healroot designated (14), hunt 2 alpacas ~[133,240] (Hector), resow rice1 when Growing runs. Downed pawns get fed by hand if nobody does it.
+G2 [today] barracks is a room again: slate walls z143 x116-120 + x120 z144-150 + [113,151], wood door [115,143], 4th bed [111,145]. Proof: room_digest shows Barracks, blueprints 0.
+G3 [2 days] no colonist breaks: moods > 35. Table+stools inside, pain heals with bed rest.
+G4 [after G1-G3] storage out of the bedroom: separate stone storeroom; campfire replaced by a stove in its own kitchen; bedrooms later.
+Rule I break most: every check = run rim_look (full picture), never a narrow query; any danger != None -> name every hostile.

@@ -22,6 +22,7 @@ tags:
 6. Terrain: sand/gravel cannot carry stone walls; dry-run every cell first.
 7. A door blueprint placed on an existing wall removes that wall at once: the room is open until the door is built. Have the builder rush it, or place the door where no wall stands yet.
 8. After any change, check `map.cell` room for every bedroom (role Bedroom, 16+ cells) and for the hall.
+9. A new bed belongs to nobody until assigned: assign it right after it is built (`engine.call path="Thing:<bed>.CompAssignableToPawn.TryAssignPawn" args=[<name>]`, both partners for a double bed) and uninstall the bed it replaces; an unowned extra bed turns the bedroom into a barracks.
 
 ## Structures: costs and numbers
 | Def | Cost | Work | Base HP | Notes |

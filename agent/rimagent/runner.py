@@ -448,10 +448,8 @@ class Runner:
         except BridgeError:
             return None
         trigger = None
-        live = set()
         for a in alerts:
             label = re.sub(r"\d+", "#", str(a.get("label", ""))); pr = str(a.get("priority", ""))  # "x2"/"20 hours" -> "x3"/"15 hours" is the same alert
-            live.add(label)
             prios = set(self.cfg["play"].get("alert_wake_priorities", ["Critical"]))
             urgent = pr in prios or "idle" in label.lower()
             if not urgent:
@@ -460,9 +458,6 @@ class Runner:
             if last is None or tick - last > float(self.cfg["play"].get("alert_rewake_hours", 24)) * TICKS_PER_HOUR:
                 self._seen_alerts[label] = tick
                 trigger = trigger or f"alert ({pr}): {label}"
-        for label in list(self._seen_alerts):
-            if label not in live:
-                del self._seen_alerts[label]  # cleared alerts may wake again if they return
         return trigger
 
     def is_urgent(self, trigger: str) -> bool:

@@ -322,11 +322,10 @@ namespace RimBridge.Steward.Stock
             && IsWild(target)
             && ProductCounter.IsInAllowedArea(HuntingGrounds, target.Position, InvertHuntingGrounds);
 
-        /// <summary>Wild only: never player-owned, tamed or bonded animals.</summary>
+        /// <summary>Wild only: no faction at all (never colony animals, nor a visiting caravan's pack animals), never bonded.</summary>
         private static bool IsWild(Pawn target)
         {
-            if (target.Faction != null && target.Faction.IsPlayer) return false;
-            if (target.playerSettings?.Master != null) return false;
+            if (target.Faction != null) return false;
             if (target.relations != null && target.relations.DirectRelations.Any(r => r.def == PawnRelationDefOf.Bond)) return false;
             return true;
         }

@@ -48,4 +48,8 @@ Pack points are 40% above a raid's; only fence-passing species are picked. They 
 ## Pens (1.6)
 Farm animals (trainability "none": muffalo, alpaca, boar, chicken, turkey, deer, elk) ignore allowed areas and roam off the map unless roped into a pen: a pen marker (30 stuff) enclosed by fences, walls or doors with at least one gate (rw_ui_build Fence / FenceGate / PenMarker). A 20x20 grass pen barely feeds 4 pigs; build big and stock hay for winter. Raiders never target pen animals; cap herds with auto-slaughter.
 
+## Field notes (verified in my own colonies)
+- **Never hunt a caravan's animals.** A visiting trader's donkeys, muffalo and turkeys belong to that faction. Each shot costs goodwill (seen in ep.1, 1.7: -23 per hit, 0 -> -92 in 4 rifle shots), and below -75 the faction turns hostile at once; the 13-strong caravan then downed two colonists. The old steward hunting job treated any non-player animal as wild and designated a caravan donkey when no wild game was left (fixed: wild = no faction). While a caravan is on the map, check `state.designations(def=Hunt)` for its animals and cancel them (`ui.designate designator=cancel things=[id]`).
+- **"no valid animals" on a high hunting target is a warning, not a nudge to raise it.** Suspend the hunting job instead (`steward.stock.set kind=hunting suspended=true`) and get food from crops.
+
 Sources: Animals; Animal husbandry; Pen; Meat Amount; Wildness; Training; Deer; Elk; Wild boar; Grizzly bear; Timber wolf; Cougar; Alpaca; Muffalo; Hare; Squirrel; Turkey; Chicken; Labrador retriever; Husky; Events
